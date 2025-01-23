@@ -64,6 +64,25 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 };
 #endif // ENCODER_MAP_ENABLE
 
+#ifdef RGB_MATRIX_ENABLE
+const uint8_t num_lock_keys[] = {37, 38, 39, 40, 58, 59, 60, 74, 75, 76, 77, 91, 92, 93, 105, 106, 107};
+const uint8_t caps_lock_index = 61;
+
+bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
+    if(!host_keyboard_led_state().num_lock){
+        for (uint8_t i = 0; i < sizeof(num_lock_keys); i++) {
+            rgb_matrix_set_color(num_lock_keys[i], 255, 0, 0);
+        }
+    }
+
+    if(host_keyboard_led_state().caps_lock){
+        rgb_matrix_set_color(caps_lock_index, 255, 0, 0);
+    }
+
+    return false;
+}
+#endif
+
 // clang-format on
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (!process_record_keychron_common(keycode, record)) {
