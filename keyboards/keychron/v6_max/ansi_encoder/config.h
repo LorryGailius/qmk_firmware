@@ -48,12 +48,6 @@
 #    define LOW_BAT_IND_INDEX \
         { 97 }
 
-#    define NUM_PAD_ARRAY \
-        {37, 38, 39, 40, 58, 59, 60, 74, 75, 76, 77, 91, 92, 93, 105, 106, 107}
-
-#    define QWERTY_ARRAY \
-        { 61 }
-
 #    define RGB_MATRIX_KEYPRESSES
 #    define RGB_MATRIX_FRAMEBUFFER_EFFECTS
 

@@ -64,22 +64,20 @@ const uint16_t PROGMEM encoder_map[][NUM_ENCODERS][2] = {
 };
 #endif // ENCODER_MAP_ENABLE
 
+static const uint8_t num_pad_array[] = {37, 38, 39, 40, 58, 59, 60, 74, 75, 76, 77, 91, 92, 93, 105, 106, 107};
+static const uint8_t caps_lock_idx[] = {61};
+
 #ifdef RGB_MATRIX_ENABLE
-
-const uint8_t caps_lock_index = 61;
-
 bool rgb_matrix_indicators_advanced_user(uint8_t led_min, uint8_t led_max) {
 
-#ifdef NUM_PAD_ARRAY
     if(!host_keyboard_led_state().num_lock){
-        for (uint8_t i = 0; i < ARRAY_SIZE(NUM_PAD_ARRAY); i++) {
-            rgb_matrix_set_color(NUM_PAD_ARRAY[i], 255, 0, 0);
+        for (uint8_t i = 0; i < ARRAY_SIZE(num_pad_array); i++) {
+            rgb_matrix_set_color(num_pad_array[i], 255, 0, 0);
         }
     }
-#endif
 
     if(host_keyboard_led_state().caps_lock){
-        rgb_matrix_set_color(caps_lock_index, 255, 0, 0);
+        rgb_matrix_set_color(caps_lock_idx[0], 255, 0, 0);
     }
 
     return false;
